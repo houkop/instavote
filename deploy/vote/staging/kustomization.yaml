@@ -5,3 +5,22 @@ resources:
 patches:
 - path: deployment.yaml
 - path: service.yaml
+
+replicas:
+- count: 6
+  name: vote
+
+images:
+- name: schoolofdevops/vote
+  newTag: v4
+
+namespace: instavote
+
+
+commonAnnotations:
+  supported-by: madfaa
+labels:
+- includeSelectors: true
+  pairs:
+    env: staging
+    project: instavote
